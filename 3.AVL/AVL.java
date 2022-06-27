@@ -32,15 +32,15 @@ public class AVL<E extends Comparable<E>> {
 	private Node insertRecursive(E x, Node current) throws ItemDuplicated {
 		Node res = current;
 		if (current == null) {
-			this.height = true;
 			res = new Node(x);	
-
+			this.height = true;
 		}
 		else {
 			int resC = current.data.compareTo(x);
 			if (resC == 0) throw new ItemDuplicated("El dato " + x + " ya fue insertado antes");
 			if (resC < 0) {
 				res.right = insertRecursive(x, current.right);
+				//se recalcula el fb de cada nodo por el que se ha transitado despues de insertar el nuevo nodo
 				if (this.height) {
 					switch (res.fb) {
 						case -1: res.fb = 0; this.height = false; break;
@@ -53,6 +53,17 @@ public class AVL<E extends Comparable<E>> {
 				}	
 			}
 			else {
+				res.left = insertRecursive(x, current.left);
+				if (this.height) {
+					switch (res.fb) {
+						case 1: res.fb = 0; this.height = false; break;
+						case 0: res.fb = -1; this.height = true; break;
+						case -1:
+							res = balanceToRight(res);
+							this.height = false;
+							break;
+					}
+				}	
 			}
 		}
 		return res;
