@@ -109,7 +109,7 @@ public class AVL<E extends Comparable<E>> {
 				}
 				grandson.fb = 0;
 				son = rotateSL(son);
-				father = rotateSD(father);
+				father = rotateSR(father);
 				break;
 		}
 		return father;
