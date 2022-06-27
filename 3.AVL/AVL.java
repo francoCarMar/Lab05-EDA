@@ -14,7 +14,6 @@ public class AVL<E extends Comparable<E>> {
 			this(data, null, null);
 		}	
 	}
-
 	private Node root;
 	private boolean height;
 	private E lastData;
@@ -180,9 +179,17 @@ public class AVL<E extends Comparable<E>> {
 		} 
 		else if (current.left != null && current.right != null) { //dos hijos
 			res.right = minRemove(current.right);
+			if(this.height) {
+				switch (res.fb) {
+					case 1: res.fb = 0; this.height = true; break;
+					case 0: res.fb = -1; this.height = false; break;
+					case -1:
+						res = balanceToRight(res);
+						this.height = true;
+						break;
+				}
+			}	
 			res.data = lastData;	
-			res.fb = -1;
-			this.height = true;
 		} else { //1 hijo o ninguno
 			res = (current.left != null) ? current.left : current.right;
 			this.height = true;
@@ -199,10 +206,21 @@ public class AVL<E extends Comparable<E>> {
 	protected Node minRemove(Node current) {
 		if (current.left != null) { //busca el mínimo
 			current.left = minRemove(current.left);
+			if(this.height) {
+				switch (current.fb) {
+					case -1: current.fb = 0; this.height = true; break;
+					case 0: current.fb = 1; this.height = false; break;
+					case 1:
+						current = balanceToLeft(current);
+						this.height = true;
+						break;
+				}
+			}
 		}
 		else { //elimina el mínimo
 			lastData = current.data;
 			current = current.right;
+			this.height = true;
 		}
 		return current;
 	}
