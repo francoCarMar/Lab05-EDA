@@ -80,19 +80,46 @@ public class AVL<E extends Comparable<E>> {
 			case -1:
 				Node grandson = son.left;
 				switch (grandson.fb) {
-					case -1: father.fb = 0; son.fb = -1; break;
+					case -1: father.fb = 0; son.fb = 1; break;
 					case 0: father.fb = 0; son.fb = 0; break;
-					case 1: father.fb = 1; son.fb = 0; break;
+					case 1: father.fb = -1; son.fb = 0; break;
 				}
 				grandson.fb = 0;
-				father.right = rotateSR(son);
+				son = rotateSR(son);
 				father = rotateSL(father);
 				break;
 		}
 		return father;
 	}
 	private Node balanceToRight(Node father) {
-		return null;
+		Node son = father.left;
+		switch (son.fb) {
+			case -1:
+			case 0: 
+				father.fb = 0;
+				son.fb = 0;
+				father = rotateSR(father);
+				break;
+			case 1:
+				Node grandson = son.right;
+				switch (grandson.fb) {
+					case -1: father.fb = 1; son.fb = 0; break;
+					case 0: father.fb = 0; son.fb = 0; break;
+					case 1: father.fb = 0; son.fb = -1; break;
+				}
+				grandson.fb = 0;
+				son = rotateSL(son);
+				father = rotateSD(father);
+				break;
+		}
+		return father;
+	}
+	private Node rotateSL(Node father) {
+		Node son = father.right;
+		father.right = son.left;
+		son.left = father;
+		father = son;
+		return father;
 	}
 	private Node rotateSR(Node father) {
 		Node son = father.left;
