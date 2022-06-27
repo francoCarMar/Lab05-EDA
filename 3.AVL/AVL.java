@@ -85,7 +85,7 @@ public class AVL<E extends Comparable<E>> {
 					case 1: father.fb = -1; son.fb = 0; break;
 				}
 				grandson.fb = 0;
-				son = rotateSR(son);
+				father.right = rotateSR(son);
 				father = rotateSL(father);
 				break;
 		}
@@ -108,7 +108,7 @@ public class AVL<E extends Comparable<E>> {
 					case 1: father.fb = 0; son.fb = -1; break;
 				}
 				grandson.fb = 0;
-				son = rotateSL(son);
+				father.left = rotateSL(son);
 				father = rotateSR(father);
 				break;
 		}
@@ -144,6 +144,7 @@ public class AVL<E extends Comparable<E>> {
 		}
 	}
 	public void remove(E x) throws ItemNotFound {
+		this.height = false;
 		this.root = removeNode(x, this.root);
 	}
 	protected Node removeNode(E x, Node current) throws ItemNotFound {
@@ -160,6 +161,7 @@ public class AVL<E extends Comparable<E>> {
 					case -1:
 						res = balanceToRight(res);
 						this.height = true;
+						break;
 				}
 			}
 		} 
@@ -172,15 +174,18 @@ public class AVL<E extends Comparable<E>> {
 					case 1:
 						res = balanceToLeft(res);
 						this.height = true;
+						break;
 				}
 			}
 		} 
 		else if (current.left != null && current.right != null) { //dos hijos
 			res.right = minRemove(current.right);
 			res.data = lastData;	
+			res.fb = -1;
 			this.height = true;
 		} else { //1 hijo o ninguno
 			res = (current.left != null) ? current.left : current.right;
+			this.height = true;
 		}
 		return res;
 	}
