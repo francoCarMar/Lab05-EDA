@@ -158,13 +158,22 @@ public class AVL<E extends Comparable<E>> {
 					case 1: res.fb = 0; this.height = true; break;
 					case 0: res.fb = -1; this.height = false; break;
 					case -1:
-						res = balanceToLeft(res);
+						res = balanceToRight(res);
 						this.height = true;
 				}
 			}
 		} 
 		else if (resC > 0) {
 			res.left = removeNode(x, current.left);
+			if(this.height) {
+				switch (res.fb) {
+					case -1: res.fb = 0; this.height = true; break;
+					case 0: res.fb = 1; this.height = false; break;
+					case 1:
+						res = balanceToLeft(res);
+						this.height = true;
+				}
+			}
 		} 
 		else if (current.left != null && current.right != null) { //dos hijos
 			res.right = minRemove(current.right);
