@@ -324,7 +324,7 @@ I. SOLUCIÓN DE EJERCICIOS/PROBLEMAS <br>
 			father.right = son.left;	//el nodo derecho de *father* es ahora el nodo izquierdo del *son*   
 			son.left = father;	//el nodo izquierdo de *son* es ahora *father* 
 			father = son;	//*son* ahora es *father*
-			return father;	//retorna a *son*
+			return father;	//retorna a *father*
 		}
 	  ```
 	  Se realiza un procedimiento similar en la Rotación Simple Derecha (RSR)
@@ -394,12 +394,13 @@ I. SOLUCIÓN DE EJERCICIOS/PROBLEMAS <br>
 			return father;
 		}
 	
-	  ```
+	  ```	
 II. CONCLUSIONES
 	
 - Los arboles AVL son estructuras de datos útiles para almacenar y gestionar datos, en Java utilizamos datos genéricos para poder almacenar todo tipo de datos en el árbol haciendo uso de la interface Comparable.
 - Las operaciones de balanceo de los árboles AVL nos ayudan a mejorar los tiempos de los algoritmos para operaciones como insert, delete, search haciendo que nuestro programa pueda ser más eficiente.
-	
+- Se puede argumentar que los AVL son uno de los tipos de BST's más ordenados y eficientes que hay, debido al orden obtenido mediante los factores de equilibrio y los procesos de rotación.
+
 ---
     
 ## RETROALIMENTACIÓN GENERAL
