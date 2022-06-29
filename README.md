@@ -179,62 +179,92 @@ I. SOLUCIÓN DE EJERCICIOS/PROBLEMAS <br>
   * **Operaciones Delete**
   * delete(**100**)
   
+    Cuando eliminamos el 100 notamos que tiene 2 hijos, entonces es necesario buscar el sucesor <code>in orden</code> (nodo verde) del 100, reemplazarlo y luego recién eliminarlo.
+    
     <img src="grafEjercicio2/delete1.jpeg" style="width:70%; height:auto"/>
 
   * delete(**200**)
   
+    Cuando eliminamos el 200, igual que el caso anterior, tenemos que buscar el sucesor (nodo verde) y reemplazarlo, entonces el nodo recién se elimina.
+    
     <img src="grafEjercicio2/delete2.jpeg" style="width:70%; height:auto"/>
 
   * delete(**300**)
   
+    Cuando eliminamos el 300 notamos que solo tiene un hijo, entonces no es necesario buscar sucesores, solo conectamos el nodo hijo al padre y se elimina el nodo.
+    
     <img src="grafEjercicio2/delete3.jpeg" style="width:70%; height:auto"/>
 
   * delete(**400**)
   
+    Cuando eliminamos el 400, igual que el caso anterior, solo tiene un solo hijo, entonces lo conectamos al nodo padre y el nodo se elimina.
+    
     <img src="grafEjercicio2/delete4.jpeg" style="width:70%; height:auto"/>
 
   * delete(**500**)
   
+    Cuando eliminamos el 500 se produce un desequilibrio en el árbol y los factores de balance son -2 y -1 lo cual nos indica que se tiene que realizar una <code>rotacionSimpleDerecha()</code>.
+    
     <img src="grafEjercicio2/delete5.jpeg" style="width:70%; height:auto"/>
 
   * delete(**50**)
   
+    Cuando eliminamos el 50 solo tenemos que conectar su único hijo al nodo padre para poder eliminar el nodo.
+    
     <img src="grafEjercicio2/delete6.jpeg" style="width:70%; height:auto"/>
 
   * delete(**25**)
   
+    Cuando eliminamos el 25, el árbol no está balanceado, entonces verificando los factores de balance 2 y 0 aplicamos una <code>rotacionSimpleIzquierda()</code>.
+    
     <img src="grafEjercicio2/delete7.jpeg" style="width:70%; height:auto"/>
 
   * delete(**350**)
   
+    Cuando eliminamos el 350 debido a que tiene dos nodos hijos tenemos que encontrar el sucesor (verde), luego reemplazarlo y eliminarlo.
+    
     <img src="grafEjercicio2/delete8.jpeg" style="width:70%; height:auto"/>
 
   * delete(**375**)
   
+    Cuando eliminamos el 375 se produce un desequilibrio en el árbol, evaluando los factores de balance -2 y -1 tenemos que aplicar una <code>rotacionSimpleDerecha()</code>.
+    
     <img src="grafEjercicio2/delete9.jpeg" style="width:70%; height:auto"/>
 
   * delete(**360**)
   
+    Cuando eliminamos el 360 no hay problemas debido a que es una hoja y solo tenemos que desvincularlo.
+    
     <img src="grafEjercicio2/delete10.jpeg" style="width:60%; height:auto"/>
 
   * delete(**355**)
   
+    Cuando eliminamos el 355, igual que el caso anterior, solo lo desvinculamos del nodo padre.
+    
     <img src="grafEjercicio2/delete11.jpeg" style="width:60%; height:auto"/>
 
   * delete(**150**)
   
+    Cuando eliminamos el 150, al ser nodo hoja solo tenemos que desvincularlo del nodo padre.
+    
     <img src="grafEjercicio2/delete12.jpeg" style="width:60%; height:auto"/>
 
   * delete(**175**)
   
+    Cuando eliminamos el 175 notamos que tiene 2 nodos hijos, entonces tenemos que buscar el sucesor (verde) y reemplazarlo.
+    
     <img src="grafEjercicio2/delete13.jpeg" style="width:60%; height:auto"/>
 
   * delete(**120**)
   
+    Cuando eliminamos el 120, al ser nodo hoja solo tenemos que desvincularlo del nodo padre.
+    
     <img src="grafEjercicio2/delete14.jpeg" style="width:50%; height:auto"/>
 
   * delete(**190**)
   
+    Cuando eliminamos el 190 estamos eliminando el último elemento del árbol, por lo que el árbol AVL ya no tiene elementos.
+    
     <img src="grafEjercicio2/delete15.jpeg" style="width:50%; height:auto"/>
 
 
