@@ -62,18 +62,22 @@
 I. SOLUCIÓN DE EJERCICIOS/PROBLEMAS <br>
 * La organización del repositorio es la siguiente
     ```sh
-	.
-	├── Ejercicio
-	│   ├── 
-	│   ├── 
-	│   ├── 
-	│   └── 
-	├── Ejercicio
-	│   ├── 
-	│   ├── 
-	│   ├── 
-	│   └── 
-	└── README.md
+ .
+├── Ejercicio01
+│   ├── ExceptionIsEmpty.java
+│   ├── Node.java
+│   ├── Stack.java
+│   ├── StackLink.java
+│   └── Test.java
+├── Ejercicio02Graficas
+│   ...	
+│   └── graficas
+├── Ejercicio03
+│   ├── AVL.java
+│   ├── ItemDuplicated.java
+│   ├── ItemNotFound.java
+│   └── Test.java
+└── README.md
     ```
 * **Ejercicio 1:** Corchetes equilibrados
   Para este ejercicio se implemento un Stack, por su modo de acceso a los datos LIFO. Por otro lado para la determinacion de el balance de las cadenas de corchetes se considero el siguiente metodo.
