@@ -76,6 +76,20 @@ I. SOLUCIÓN DE EJERCICIOS/PROBLEMAS <br>
 	└── README.md
     ```
 * **Ejercicio 1:** Corchetes equilibrados
+  Para este ejercicio se implemento un Stack, por su modo de acceso a los datos LIFO. Por otro lado para la determinacion de el balance de las cadenas de corchetes se considero el siguiente metodo.
+  ```java
+  public static String isBalanced(String s) throws ExceptionIsEmpty{
+    if(s == null || s.isEmpty() || s.length()%2 == 1) return "NO"; // casos obvios NO
+    StackLink<Character> stack = new StackLink<>();
+    int i = 0;
+    while(i < s.length() && !isNegative(s.charAt(i)))             //inserto en la cola 
+      stack.push(s.charAt(i++));
+    while(i < s.length() && !stack.isEmpty() && arePairs(stack.top(), s.charAt(i++)))  // si tiene pareja se elimina 
+      stack.pop();
+    if(stack.isEmpty() && i == s.length()) return "SI";          //stack vacio y ya se itero la cadena completa es SI
+    return "NO";						 //en cualquier otro caso no		
+  }
+  ```    
 * **Ejercicio 2:** Operaciones de árbol AVL
 
   Para el ejercicio 2 se simuló las siguientes operaciones realizadas en un árbol AVL.
