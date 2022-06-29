@@ -14,6 +14,7 @@ public class AVL<E extends Comparable<E>> {
 			this(data, null, null);
 		}	
 	}
+
 	private Node root;
 	private boolean height;
 	private E lastData;
@@ -71,6 +72,10 @@ public class AVL<E extends Comparable<E>> {
 		Node son = father.right;
 		switch (son.fb) {
 			case 0:
+				father.fb = 1;
+				son.fb = -1;
+				father = rotateSL(father);
+				break;
 			case 1: 
 				father.fb = 0;
 				son.fb = 0;
@@ -94,9 +99,13 @@ public class AVL<E extends Comparable<E>> {
 		Node son = father.left;
 		switch (son.fb) {
 			case -1:
-			case 0: 
 				father.fb = 0;
 				son.fb = 0;
+				father = rotateSR(father);
+				break;
+			case 0: 
+				father.fb = -1;
+				son.fb = 1;
 				father = rotateSR(father);
 				break;
 			case 1:
@@ -159,7 +168,7 @@ public class AVL<E extends Comparable<E>> {
 					case 0: res.fb = -1; this.height = false; break;
 					case -1:
 						res = balanceToRight(res);
-						this.height = true;
+						this.height = (res.fb != 0) ? false : true;
 						break;
 				}
 			}
@@ -172,7 +181,7 @@ public class AVL<E extends Comparable<E>> {
 					case 0: res.fb = 1; this.height = false; break;
 					case 1:
 						res = balanceToLeft(res);
-						this.height = true;
+						this.height = (res.fb != 0) ? false : true;
 						break;
 				}
 			}
