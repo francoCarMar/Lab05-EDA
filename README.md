@@ -297,7 +297,8 @@ I. SOLUCIÓN DE EJERCICIOS/PROBLEMAS <br>
 
 II. CONCLUSIONES
 	
-- 
+- Los arboles AVL son estructuras de datos útiles para almacenar y gestionar datos, en Java utilizamos datos genéricos para poder almacenar todo tipo de datos en el árbol haciendo uso de la interface Comparable.
+- Las operaciones de balanceo de los árboles AVL nos ayudan a mejorar los tiempos de los algoritmos para operaciones como insert, delete, search haciendo que nuestro programa pueda ser más eficiente.
 	
 ---
     
