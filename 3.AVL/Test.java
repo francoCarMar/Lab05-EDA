@@ -7,7 +7,6 @@ public class Test {
         try {
             avl.insert(1);
             avl.insert(1);
-
         } catch (Exception e) {
             System.out.println(e.getMessage());
             // the item duplicated is not added
