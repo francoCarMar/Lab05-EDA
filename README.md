@@ -85,9 +85,9 @@ I. SOLUCIÓN DE EJERCICIOS/PROBLEMAS <br>
     while(i < s.length() && !isNegative(s.charAt(i)))             //bucle para insertar en el stack 
       stack.push(s.charAt(i++));
     while(i < s.length() && !stack.isEmpty() && arePairs(stack.top(), s.charAt(i++)))  // si tiene pareja 
-      stack.pop();								       // se elimina en este bucle	
-    if(stack.isEmpty() && i == s.length()) return "SI";          //stack vacio y ya se itero la cadena completa es SI
-    return "NO";						 //en cualquier otro caso no		
+      stack.pop();								       // se elimina en este bucle
+    if(stack.isEmpty() && i == s.length()) return "SI";       //stack vacio y ya se itero la cadena completa es SI
+    return "NO";					      //en cualquier otro caso no		
   }
   ```    
 * **Ejercicio 2:** Operaciones de árbol AVL
