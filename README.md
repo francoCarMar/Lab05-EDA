@@ -223,7 +223,7 @@ I. SOLUCIÓN DE EJERCICIOS/PROBLEMAS <br>
   
     Cuando eliminamos el 500 se produce un desequilibrio en el árbol y los factores de balance son -2 y -1 lo cual nos indica que se tiene que realizar una <code>rotacionSimpleDerecha()</code>.
     
-    <img src="gEjercicio02Graficas/delete5.jpeg" style="width:70%; height:auto"/>
+    <img src="Ejercicio02Graficas/delete5.jpeg" style="width:70%; height:auto"/>
 
   * delete(**50**)
   
