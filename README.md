@@ -82,12 +82,16 @@ I. SOLUCIÓN DE EJERCICIOS/PROBLEMAS <br>
     if(s == null || s.isEmpty() || s.length()%2 == 1) return "NO"; // casos obvios NO
     StackLink<Character> stack = new StackLink<>();
     int i = 0;
-    while(i < s.length() && !isNegative(s.charAt(i)))             //bucle para insertar en el stack 
+    //bucle para insertar en el stack 	
+    while(i < s.length() && !isNegative(s.charAt(i))){ 
       stack.push(s.charAt(i++));
-    while(i < s.length() && !stack.isEmpty() && arePairs(stack.top(), s.charAt(i++)))  // si tiene pareja 
-      stack.pop();								       // se elimina en este bucle
-    if(stack.isEmpty() && i == s.length()) return "SI";       //stack vacio y ya se itero la cadena completa es SI
-    return "NO";					      //en cualquier otro caso no		
+    }    
+    while(i < s.length() && !stack.isEmpty() && arePairs(stack.top(), s.charAt(i++))){ 
+      stack.pop(); // si tiene pareja se elimina en este bucle	
+    }
+    //stack vacio y ya se itero la cadena completa es SI
+    if(stack.isEmpty() && i == s.length()) return "SI"; 
+    return "NO";					     		
   }
   ```    
 * **Ejercicio 2:** Operaciones de árbol AVL
