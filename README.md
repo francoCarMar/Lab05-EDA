@@ -293,8 +293,108 @@ I. SOLUCIÓN DE EJERCICIOS/PROBLEMAS <br>
 
 
 * **Ejercicio 3:** Árbol AVL
----
-
+  * Para la realización del TDA, se uso la información y el código propuesto en clase de teoría, de manera que
+	* La clase Node se ha escrito como parte propia de la clase AVL. Tiene los siguientes atributos
+	  ```java
+		  class Node {
+		     protected E data;	//Datos
+		     protected Node left;	//leftNode
+		     protected Node right;	//rightNode
+		     protected int fb;	//balanceFactor
+		     ...
+		  }
+	  ```
+	* La clase AVL, propiamente tenía los siguientes atributos
+	  ```java
+		  public class AVL<E extends Comparable<E>> {
+		     class Node {
+	             ...
+	      	     }
+		     private Node root;	//raiz del árbol
+		     private boolean height;	//booleano que verifica si se necesita alterar el fb de los nodos
+		     private E lastData;	//copia del valor de un último elemento borrado
+		  }
+	  ```
+	* Las funciones *insert()*, *search()*, *remove()*, *minRemove()* y *postOrder()* son todas recursivas
+	* Pero, para la realización de este ejercicio fue de vital importancia tener los algoritmos de rotación, tanto simple como doble
+	* Rotación Simple Izquierda (RSL)
+	  ```java
+		private Node rotateSL(Node father) {
+			Node son = father.right;	//el nodo derecho de *father* se instancia en *son*
+			father.right = son.left;	//el nodo derecho de *father* es ahora el nodo izquierdo del *son*   
+			son.left = father;	//el nodo izquierdo de *son* es ahora *father* 
+			father = son;	//*son* ahora es *father*
+			return father;	//retorna a *son*
+		}
+	  ```
+	  Se realiza un procedimiento similar en la Rotación Simple Derecha (RSR)
+	* Las Rotaciones Dobles, se resuelven directamente mediante dos rotaciones simples
+		* Rotación Doble Izquierda (RSL)
+		  ```java
+			Node son = father.left;
+			father.left = rotateSL(son);
+			father = rotateSR(father);
+		  ```
+		* Rotación Doble Derecha (RSR)
+		  ```java
+			Node son = father.right;
+			father.right = rotateSR(son);
+			father = rotateSL(father);
+		  ```
+	* Sin embargo, todo este proceso sería inutil si no se actualizan los factores de balance (fb), es así que, después de cada inserción y eliminación,
+	  los fb de cada nodo se actualizan constantemente
+	* Por ejemplo, después de insertar un elemento al lado izquierdo de un nodo cualquiera
+	  ```java
+		Node res = current;
+		...
+		res.left = insertRecursive(x, current.left);
+		//una vez insertado un nodo, height es true
+		if (this.height) {
+			switch (res.fb) {
+				//dependiendo de cada caso, fb y height se modificarán 
+				case 1: res.fb = 0; this.height = false; break;	
+				case 0: res.fb = -1; this.height = true; break;
+				case -1:
+					res = balanceToRight(res);
+					this.height = false;
+					break;
+			}
+		}
+		...
+	  ```
+	* A su vez, cada función de balance modifica los fb de cada nodo correspondiente, realizando **despues** la rotación necesaria. Por ejemplo con BalanceToRight.
+	  ```java
+		private Node balanceToRight(Node father) {
+			Node son = father.left;
+			//cada caso corresponde a una situación pertinente, realizando las modificaciones a los fb de *father*, *son*
+			//y *grandson* si hace falta.
+			switch (son.fb) {
+				case -1:
+					father.fb = 0;
+					son.fb = 0;
+					father = rotateSR(father);
+					break;
+				case 0: 
+					father.fb = -1;
+					son.fb = 1;
+					father = rotateSR(father);
+					break;
+				case 1:
+					Node grandson = son.right;
+					switch (grandson.fb) {
+						case -1: father.fb = 1; son.fb = 0; break;
+						case 0: father.fb = 0; son.fb = 0; break;
+						case 1: father.fb = 0; son.fb = -1; break;
+					}
+					grandson.fb = 0;
+					father.left = rotateSL(son);
+					father = rotateSR(father);
+					break;
+			}
+			return father;
+		}
+	
+	  ```
 II. CONCLUSIONES
 	
 - Los arboles AVL son estructuras de datos útiles para almacenar y gestionar datos, en Java utilizamos datos genéricos para poder almacenar todo tipo de datos en el árbol haciendo uso de la interface Comparable.
