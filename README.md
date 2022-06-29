@@ -79,7 +79,7 @@ I. SOLUCIÓN DE EJERCICIOS/PROBLEMAS <br>
     │   └── Test.java
     └── README.md
     ```
-**Nota :** Para los Ejercicios 1 y 3 se debera compilar y ejecutar "Test.java".
+  * **Nota :** Para los Ejercicios 1 y 3 se debera compilar y ejecutar "Test.java".
 * **Ejercicio 1:** Corchetes equilibrados
   Para este ejercicio se implemento un Stack, por su modo de acceso a los datos LIFO. Por otro lado para la determinacion de el balance de las cadenas de corchetes se considero el siguiente metodo.
   ```java
